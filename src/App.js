@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ContextDataProvider from './contexts/DataContext';
+import { Login, Dashboard, NotFound } from './pages';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ContextDataProvider>
+      <Router>
+        <div className="App">
+            <Routes>
+              <Route  path="/" exact element={<Login />} />
+              <Route  path="/dashboard" exact element={<Dashboard />} />
+              <Route  element={<NotFound />} />  {/* Not found 404 */}
+            </Routes>
+        </div>
+      </Router>
+    </ContextDataProvider>
   );
 }
 

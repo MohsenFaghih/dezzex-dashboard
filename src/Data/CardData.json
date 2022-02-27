@@ -1,0 +1,16 @@
+[
+    {
+        "team_logo":"one",
+        "team_member":["one","two","three","four"],
+        "team_length":7,
+        "project_complete":32,
+        "team_color":"#F2BC9E"
+    },
+    {
+        "team_logo":"two",
+        "team_member":["five","six","seven","eight"],
+        "team_length":16,
+        "project_complete":54,
+        "team_color":"#92C7E8"
+    }
+]

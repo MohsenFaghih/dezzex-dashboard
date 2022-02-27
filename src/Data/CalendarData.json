@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "Daily Stand up Meeting",
+        "start_time":"9:00 AM",
+        "end_time": "10:00 AM",
+        "group":"one"
+    },
+    {
+        "id": 2,
+        "title": "Team Lunch",
+        "start_time": "12:00 PM",
+        "end_time": "1:00 PM",
+        "group":"two"
+    },
+    {
+        "id": 3,
+        "title": "Design review with Cambr Client",
+        "start_time": "4:00 PM",
+        "end_time": "5:00 PM",
+        "group":"three"
+    }
+]
