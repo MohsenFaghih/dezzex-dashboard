@@ -6,12 +6,13 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
 
 const Todo = () => {
 
+// Get todo data and corrent time from context
     const todoDataList = useContext(DataContext).todoDataList
     const today = useContext(DataContext).today
     const fullDate = useContext(DataContext).fullDate
 
     return (
-        <Container className='p-0'>
+        <Container fluid className='p-0'>
             <Row>
                 <Col md={12}>
                     <TodoAdd>
@@ -26,7 +27,8 @@ const Todo = () => {
                         </div>
                     </TodoAdd>
                 </Col>
-                <Col md={12}>
+                <Col md={12} className='mb-4'>
+                    {/* Show each todo */}
                     {todoDataList.map(item=>(
                         <TodoItem
                             key={item.id}

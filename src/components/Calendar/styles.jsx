@@ -27,7 +27,7 @@ export const CalendarRoot = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 85%;
+        // height: 85%;
 
         & div.hour{
             display: flex;

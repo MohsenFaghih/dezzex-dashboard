@@ -5,6 +5,7 @@ import {ProjectTableRoot} from './styles'
 
 const ProjectTable = () => {
 
+// Get project data from context
     const context = useContext(DataContext)
     const projectData = context.projectData
     const projectTableTitles = context.projectTableTitles
@@ -14,11 +15,11 @@ const ProjectTable = () => {
             <Table responsive borderless={true}>
                 <thead>
                     <tr>
-                        {projectTableTitles.map(title=><th>{title}</th>)}
+                        {projectTableTitles.map(title=><th key={title}>{title}</th>)}
                     </tr>
                 </thead>
                 <tbody>
-                    {projectData.map(item=>(
+                    {projectData.map((item, i)=>(
                         <tr key={item.id}>
                             <td>
                                 <img src={`${process.env.PUBLIC_URL}/assets/team/logo/${item.logo}.png`} /> {item.name}

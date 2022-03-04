@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ProjectTableRoot = styled.div`
-    margin: 40px 0;
+    margin-bottom: 20px;
 
     & table{
         border-collapse:separate;

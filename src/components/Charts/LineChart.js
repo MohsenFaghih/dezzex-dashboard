@@ -8,8 +8,10 @@ import {
     Title,
     Tooltip,
     Legend,
+    Filler
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { ChartRoot, ChartTitle } from './styles';
   
 ChartJS.register(
     CategoryScale,
@@ -18,52 +20,83 @@ ChartJS.register(
     LineElement,
     Title,
     Tooltip,
-    Legend
+    Legend,
+    Filler
 );
   
 export const options = {
     responsive: true,
+    // maintainAspectRatio: false,
+    aspectRatio: 1.5,
     plugins: {
-        // legend: {
-        //     position: 'top' as const,
-        // },
+        legend: {
+            display: false,
+        }
     },
+    layout: {padding: 20},
+    scales: {
+        x: {
+            ticks: {
+                color: '#ADB9D8'
+            },
+            grid: {
+                display: false
+            }
+        },
+        y: {
+            ticks: {
+                color: '#ADB9D8',
+                callback: (value)=>{if(value % 100 == 0) return value},
+            },
+            grid: {
+                color: '#4E5677'
+            }
+        }
+    }
+    
 };
-  
-  
-// export const data = {
-//     labels,
-//     datasets: [
-//         {
-//             label: 'Dataset 1',
-//             data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-//             borderColor: 'rgb(255, 99, 132)',
-//             backgroundColor: 'rgba(255, 99, 132, 0.5)',
-//         },
-//         {
-//             label: 'Dataset 2',
-//             data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-//             borderColor: 'rgb(53, 162, 235)',
-//             backgroundColor: 'rgba(53, 162, 235, 0.5)',
-//         },
-//     ],
-// };
+
+// check if the last day result is bigger than first week day result or not
+const checkWeekResult = data => {
+    return {
+        lastDay: data.slice(-1)[0].value,
+        positive: data.slice(-1)[0].value > data.slice(0)[0].value
+    }
+}
 
 const LineChart = ({chartsData}) => {
+
+    const result = checkWeekResult(chartsData)
+
     const data = {
         labels: chartsData.map(d=>d.day),
         datasets: [
             {
                 label: 'WEEKLY PROJECT VIEWS',
                 data: chartsData.map(v => v.value),
-                backgroundColor: '#F0EFF7',
-                borderRadius: '20px'
+                backgroundColor: 'rgb(88,227,222,.37)',
+                borderColor: 'transparent',
+                pointBackgroundColor: '#69BABA',
+                color: 'white',
+                borderRadius: 20,
+                fill: true,
+                pointStyle: 'circle',
+                pointRadius: 3,
+                pointHoverRadius: 5
             }
         ],
     };
 
     return (
-        <Line options={options} data={data} />
+        <ChartRoot>
+            <ChartTitle arrow={result.positive?`${process.env.PUBLIC_URL}/assets/icons/arrow-up.svg`:`${process.env.PUBLIC_URL}/assets/icons/arrow-down.svg`}>
+                <div>
+                    <p>WEEKLY PROJECT VIEWS</p>
+                    <h4>{result.lastDay}</h4>
+                </div>
+            </ChartTitle>
+            <Line options={options} data={data} />
+        </ChartRoot>
     )
 }
 

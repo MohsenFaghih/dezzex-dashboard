@@ -1,5 +1,6 @@
 [
     {
+        "id":"one",
         "team_logo":"one",
         "team_member":["one","two","three","four"],
         "team_length":7,
@@ -7,6 +8,7 @@
         "team_color":"#F2BC9E"
     },
     {
+        "id":"two",
         "team_logo":"two",
         "team_member":["five","six","seven","eight"],
         "team_length":16,

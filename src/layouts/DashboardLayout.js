@@ -10,21 +10,21 @@ const DashboardLayout = (props) => {
                     <Col lg={1} className='d-sm-none d-xs-none d-md-none d-lg-block p-0' >
                         {props.children.SideMenu}
                     </Col>
-                    <Col md={8} sm={12} xs={12} className='mt-5'>
+                    <Col lg={8} md={8} sm={12} className='mt-5'>
                         <Row>
-                            <Col md={12} sm={12} lg={6}>{props.children.Todo}</Col>
-                            <Col md={12} sm={12} lg={6}>{props.children.TeamCard}</Col>
+                            <Col lg={6} md={12} sm={12}>{props.children.Todo}</Col>
+                            <Col lg={6} md={12} sm={12}>{props.children.TeamCard}</Col>
                         </Row>
                         <Row>
-                        <Col md={12} xs={12}>{props.children.ProjectTable}</Col>
+                        <Col md={12} sm={12}>{props.children.ProjectTable}</Col>
                         </Row>
                         <Row className='align-items-center'>
-                            <Col md={4} xs={12}>{props.children.BarChart}</Col>
-                            <Col md={4} xs={12}>{props.children.LineChart}</Col>
-                            <Col md={4} xs={12}>{props.children.PieChart}</Col>
+                            <Col lg={5} md={12}>{props.children.BarChart}</Col>
+                            <Col lg={4} md={12}>{props.children.LineChart}</Col>
+                            <Col lg={3} md={12}>{props.children.PieChart}</Col>
                         </Row>
                     </Col>
-                    <Col md={4} sm={12} lg={3} className='mt-4'>
+                    <Col lg={3} md={4} sm={12} className='mt-4'>
                         {props.children.Calendar}
                     </Col>
                 </Row>

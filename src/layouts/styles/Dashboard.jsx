@@ -8,10 +8,8 @@ export const DashboardRoot = styled.div`
         max-width: 100%;
     }
 
-    & div.align-items-center div{
-        @media only screen and (max-width: 1100px){
-            margin-bottom: 40px;
-        }
+    & div.align-items-center > div{
+        margin-bottom: 20px;
     }
 `;
 

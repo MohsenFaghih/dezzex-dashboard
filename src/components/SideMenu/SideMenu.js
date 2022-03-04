@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyledSideMenu} from './styles';
-import {Container, Row, Col, Navbar as NavBrand, Nav} from 'react-bootstrap';
+import {Navbar as NavBrand, Nav} from 'react-bootstrap';
 import {ReactComponent as Home} from '../../assets/img/sideMenu/home.svg'
 import {ReactComponent as Election} from '../../assets/img/sideMenu/election.svg'
 import {ReactComponent as Subtraction} from '../../assets/img/sideMenu/subtraction.svg'

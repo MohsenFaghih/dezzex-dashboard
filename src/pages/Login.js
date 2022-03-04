@@ -8,12 +8,16 @@ import { DataContext } from '../contexts/DataContext';
 
 const Login = () => {
 
-// check if user logged in ?
-    const isUserLoggedIn = useContext(DataContext).userSetCookies
+    const context = useContext(DataContext)
+
+// Get login form data from context
+    const {inputs, buttonText, errorMsg} = context.loginFormData
+// check if user logged in or not
+    const isUserLoggedIn = context.userSetCookies
 // error block to show 
     const [error, setError] = useState('none')
 // check if user info is correct, set user cookies
-    const checkUser = useContext(DataContext).checkUser
+    const checkUser = context.checkUser
     const loginUser = (e) =>{
         e.preventDefault()
         setError('none')
@@ -23,26 +27,28 @@ const Login = () => {
     
     return (
         <>
+        {/* If user data doesn't exist, show login form  */}
         {!Object.keys(isUserLoggedIn).length ? 
             <LoginForm>
                 <Form onSubmit={loginUser} style={{backgroundColor: 'white'}}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Username (admin)</Form.Label>
-                        <Form.Control name='username' type="text" placeholder="Enter email" />
+                        <Form.Label>{inputs.username}</Form.Label>
+                        <Form.Control name='username' type="text" placeholder="Enter username" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password (admin)</Form.Label>
+                        <Form.Label>{inputs.password}</Form.Label>
                         <Form.Control name='password' type="password" placeholder="Password" />
                     </Form.Group>
                     <ErrorBlock display={error}>
-                        username or password is not correct, please try again.
+                        {errorMsg}
                     </ErrorBlock>
                     <Button variant="primary" type="submit">
-                        Login
+                        {buttonText}
                     </Button>
                 </Form>
             </LoginForm>
         :
+            // If user data exists, send to dashboard page
             <Navigate to='/dashboard' />
         }
         </>

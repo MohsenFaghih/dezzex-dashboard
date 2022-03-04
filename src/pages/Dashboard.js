@@ -3,9 +3,10 @@ import { Navigate } from "react-router-dom";
 import { DataContext } from '../contexts/DataContext';
 import DashboardLayout  from '../layouts/DashboardLayout';
 import {Navbar, SideMenu, Todo, TeamCard, ProjectTable, BarChart, LineChart, PieChart, Calendar} from '../components'
-import { Container } from 'react-bootstrap';
 
 const Dashboard = () => {
+
+// Get all provided data to send as props
     const context = useContext(DataContext)
     const navbarLiks = context.navbarLiks;
     const chartsData = context.labels;

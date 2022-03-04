@@ -9,7 +9,14 @@ export const DataContext = createContext();
 
 const ContextDataProvider = (props) => {
 
-// Check, set and remove user cookies 
+// Login form data
+    const loginFormData = {
+        inputs:{username: 'username (admin)', password: 'password (admin)'},
+        buttonText: 'Login',
+        errorMsg: 'username or password is not correct, please try again.'
+    }
+
+// Check, Set and Remove user cookies 
     const [cookies, setCookie, removeCookie] = useCookies(['loginData']);
     function setCookieData(name, values, path='/', skipTime=3600000){
         if(name && values){
@@ -49,10 +56,10 @@ const ContextDataProvider = (props) => {
     const BarLabels = []
     const LineLabels = []
     const PieLabels = [
-        {name: 'Cambr', value: 20},
-        {name: 'Target', value: 50},
-        {name: 'Gramma', value: 10},
-        {name: 'Collabee', value: 20}
+        {name: 'Cambr', value: 6},
+        {name: 'Target', value: 10},
+        {name: 'Gramma', value: 8},
+        {name: 'Collabee', value: 12}
     ]
     function labelCreator(){
         for(let i = 5; i < 31; i++){
@@ -67,7 +74,9 @@ const ContextDataProvider = (props) => {
 // Project table titles
     const projectTableTitles = ["RECENT PROJECTS","CREATED","REPORTER","DUE","STATS"]
 
+// Export data object
     const context={
+        loginFormData:loginFormData,
         userSetCookies: cookies, 
         checkUser: checkUser,
         navbarLiks: navbarLiks,

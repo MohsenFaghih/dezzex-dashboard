@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-export const TeamCardRoot = styled.div`
-
-`;
-
 export const StyledCard = styled.div`
     display: flex;
     flex-direction: column;
@@ -14,8 +10,15 @@ export const StyledCard = styled.div`
     background-image: url(${props=> props.background});
     background-color: ${props=> props.color};
 
-    @media only screen and (max-width: 1100px){
-        margin: 30px 0;
+    @media only screen and (max-width: 767px){
+        flex-direction: row;
+        align-items: center;
+    }
+
+    & div.teamLogo, div.teamLogo img{
+        @media only screen and (max-width: 767px){
+            height: 90%;
+        }
     }
 
     & div, span, p{

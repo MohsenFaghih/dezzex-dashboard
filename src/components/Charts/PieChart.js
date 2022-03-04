@@ -1,34 +1,65 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Pie } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
+import { ChartRoot, ChartTitle } from './styles';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+export const options = {
+    responsive: true,
+    // maintainAspectRatio: false,
+    aspectRatio: 1,
+    plugins: {
+        legend: {
+            position: 'bottom',
+            align: 'center',
+            // fullSize: true,
+            labels: {
+                usePointStyle: true,
+                pointStyle: 'rectRounded',
+                color: 'white',
+                
+            },
+        },
+    },
+    layout: {padding: 20},
+};
+
 const PieChart = ({chartsData}) => {
     const data = {
-            labels: chartsData.map(d=>d.name),
-            datasets: [
+        labels: chartsData.map(d=>d.name),
+        datasets: [
             {
-            label: '# of Votes',
-            data: chartsData.map(v => v.value),
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-            ],
-          },
+                // label: '# of Votes',
+                data: chartsData.map(v => v.value),
+                backgroundColor: [
+                    '#A0A2FF',
+                    '#D79AD7',
+                    '#FFAAB9',
+                    '#9FDFCD',
+                ],
+                borderColor: [
+                    '#707070'
+                ],
+                hoverOffset: 10,
+
+            },
         ],
     };
 
     return (
-        <Pie data={data} />
+        <ChartRoot>
+            <ChartTitle>
+                <div>
+                    <p>PENDING TASKS</p>
+                    <h4>36</h4>
+                </div>
+            </ChartTitle>
+            <Doughnut 
+                data={data}
+                options={options}
+            />
+        </ChartRoot>
     )
 }
 
